@@ -11,6 +11,9 @@
 # production
 /build
 
+#settings
+.idea
+
 # misc
 .DS_Store
 .env.local
