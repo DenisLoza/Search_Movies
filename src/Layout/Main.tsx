@@ -16,16 +16,24 @@ export default class Main extends React.Component {
   callbackSearch = (dataSearch: string, typeMovies: string) => {
     if (dataSearch !== "") {
       this.setState(() => ({loadingData: true}))
-      fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
+      fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
         .then(responce => responce.json())
         .then(data => this.setState({movies: data.Search, loadingData: false}))
+        .catch((err) => {
+          console.error(err)
+          this.setState({loadingData: false})
+        })
     }
   }
 
   componentDidMount() {
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
       .then(responce => responce.json())
       .then(data => this.setState({movies: data.Search, loadingData: false}))
+      .catch((err) => {
+        console.error(err)
+        this.setState({loadingData: false})
+      })
   }
 
 
