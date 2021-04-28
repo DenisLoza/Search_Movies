@@ -27,13 +27,12 @@ export default class SearchPanel extends React.Component<propsSearchPanelType, s
 
   handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      this.props.cbSearch(this.state.search, this.state.typeMovies)
+      this.props.cbSearch(this.state.search.trim(), this.state.typeMovies)
     }
   }
   handleBtnPress = () => {
-    this.props.cbSearch(this.state.search, this.state.typeMovies)
+    this.props.cbSearch(this.state.search.trim(), this.state.typeMovies)
   }
-
 
 
   render() {
@@ -47,7 +46,7 @@ export default class SearchPanel extends React.Component<propsSearchPanelType, s
                  onChange={this.handleSearch}
                  onKeyPress={this.handleKeyPress}
           />
-          <button className="btn blue darken-2 btn-search"
+          <button className="btn teal darken-2 btn-search"
                   onClick={this.handleBtnPress}
           >search
           </button>
@@ -86,9 +85,8 @@ export default class SearchPanel extends React.Component<propsSearchPanelType, s
             />
             <span>Series</span>
           </label>
-          </div>
+        </div>
       </div>
     )
   }
-
 }

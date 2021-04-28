@@ -9,15 +9,18 @@ export type propsMoviesType = {
 export default function Movies(props: propsMoviesType) {
   return (
     <div className="movies">
-      {props.movies.map(cardMovie => (
-        <Movie key={cardMovie.imdbID}
-               Title={cardMovie.Title}
-               Year={cardMovie.Year}
-               imdbID={cardMovie.imdbID}
-               Type={cardMovie.Type}
-               Poster={cardMovie.Poster}
-        />
-      ))
+      {/*Если ничего не придет в пропсах, т.е. ошибка от сервера (значение массива Undefined)*/}
+      {props.movies
+        ? props.movies.map(cardMovie => (
+          <Movie key={cardMovie.imdbID}
+                 Title={cardMovie.Title}
+                 Year={cardMovie.Year}
+                 imdbID={cardMovie.imdbID}
+                 Type={cardMovie.Type}
+                 Poster={cardMovie.Poster}
+          />
+        ))
+        : "Nothing found, please try again!"
       }
     </div>
   )

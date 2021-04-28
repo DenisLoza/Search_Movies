@@ -1,38 +1,41 @@
 import React from "react"
-import Movies, {propsMoviesType} from "../Components/Movies"
+import Movies from "../Components/Movies"
 import Preloader from "../Components/Preloader"
 import SearchPanel from "../Components/SearchPanel"
 
 
 export default class Main extends React.Component {
 
-  state: propsMoviesType = {
-    movies: [{Title: "", Year: "", imdbID: "", Type: "", Poster: ""}]
+  state = {
+    movies: [{Title: "", Year: "", imdbID: "", Type: "", Poster: ""}],
+    loadingData: true
   }
 
   callbackSearch = (dataSearch: string, typeMovies: string) => {
+    if (dataSearch !== "") {
+      this.setState(() => ({loadingData: true}))
       fetch(`http://www.omdbapi.com/?apikey=7ea62270&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
         .then(responce => responce.json())
-        .then(data => this.setState({movies: data.Search}))
-
+        .then(data => this.setState({movies: data.Search, loadingData: false}))
+    }
   }
 
   componentDidMount() {
     fetch("http://www.omdbapi.com/?apikey=7ea62270&s=matrix")
       .then(responce => responce.json())
-      .then(data => this.setState({movies: data.Search}))
+      .then(data => this.setState({movies: data.Search, loadingData: false}))
   }
+
 
   render() {
     return (
       <div className="container content">
         <SearchPanel cbSearch={this.callbackSearch}
         />
-        {this.state.movies[0].imdbID === ""
+        {this.state.loadingData
           ? <Preloader/>
           : <Movies movies={this.state.movies}/>}
       </div>
     )
   }
-
 }
