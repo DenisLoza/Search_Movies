@@ -11,17 +11,18 @@ export type propsMovieType = {
 }
 
 export default function Movie(props: propsMovieType) {
-
-  return <div id={props.imdbID} className="card">
-    <div className="card-image waves-effect waves-block waves-light">
-      {props.Poster === "N/A"
-        ? <img className="activator" src={`https://via.placeholder.com/350x500.png?text=${props.Title}`}/>
-        : <img className="activator" src={props.Poster}/>
-      }
+  return (
+    <div id={props.imdbID} className="card">
+      <div className="card-image waves-effect waves-block waves-light">
+        {props.Poster === "N/A"
+          ? <img className="activator" src={`https://via.placeholder.com/350x500.png?text=${props.Title}`}/>
+          : <img className="activator" src={props.Poster}/>
+        }
+      </div>
+      <div className="card-content">
+        <span className="card-title activator grey-text text-darken-4">{props.Title}</span>
+        <p>{props.Year} <span className="right">{props.Type}</span></p>
+      </div>
     </div>
-    <div className="card-content">
-      <span className="card-title activator grey-text text-darken-4">{props.Title}</span>
-      <p>{props.Year} <span className="right">{props.Type}</span></p>
-    </div>
-  </div>
+  )
 }
