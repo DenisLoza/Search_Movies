@@ -10,13 +10,11 @@ export default class Main extends React.Component {
     movies: [{Title: "", Year: "", imdbID: "", Type: "", Poster: ""}]
   }
 
-  callbackSearch = (dataSearch: string) => {
-    if (dataSearch !== "") {
-      fetch(`http://www.omdbapi.com/?apikey=7ea62270&s=${dataSearch}`)
+  callbackSearch = (dataSearch: string, typeMovies: string) => {
+      fetch(`http://www.omdbapi.com/?apikey=7ea62270&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
         .then(responce => responce.json())
         .then(data => this.setState({movies: data.Search}))
 
-    }
   }
 
   componentDidMount() {
@@ -28,7 +26,8 @@ export default class Main extends React.Component {
   render() {
     return (
       <div className="container content">
-        <SearchPanel cbSearch={this.callbackSearch}/>
+        <SearchPanel cbSearch={this.callbackSearch}
+        />
         {this.state.movies[0].imdbID === ""
           ? <Preloader/>
           : <Movies movies={this.state.movies}/>}
