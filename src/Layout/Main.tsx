@@ -4,6 +4,8 @@ import Preloader from "../Components/Preloader"
 import SearchPanel from "../Components/SearchPanel"
 
 
+const API_KEY = process.env.REACT_APP_API_KEY
+
 export default class Main extends React.Component {
 
   state = {
@@ -14,14 +16,14 @@ export default class Main extends React.Component {
   callbackSearch = (dataSearch: string, typeMovies: string) => {
     if (dataSearch !== "") {
       this.setState(() => ({loadingData: true}))
-      fetch(`http://www.omdbapi.com/?apikey=7ea62270&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
+      fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${dataSearch}${typeMovies === "all" ? "" : `&type=${typeMovies}`}`)
         .then(responce => responce.json())
         .then(data => this.setState({movies: data.Search, loadingData: false}))
     }
   }
 
   componentDidMount() {
-    fetch("http://www.omdbapi.com/?apikey=7ea62270&s=matrix")
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
       .then(responce => responce.json())
       .then(data => this.setState({movies: data.Search, loadingData: false}))
   }
