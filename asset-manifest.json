@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/DenisLoza/Search_Movies/static/css/main.22dba1a6.chunk.css",
-    "main.js": "/DenisLoza/Search_Movies/static/js/main.c2434856.chunk.js",
-    "main.js.map": "/DenisLoza/Search_Movies/static/js/main.c2434856.chunk.js.map",
+    "main.js": "/DenisLoza/Search_Movies/static/js/main.a281ac32.chunk.js",
+    "main.js.map": "/DenisLoza/Search_Movies/static/js/main.a281ac32.chunk.js.map",
     "runtime-main.js": "/DenisLoza/Search_Movies/static/js/runtime-main.70c5ce7d.js",
     "runtime-main.js.map": "/DenisLoza/Search_Movies/static/js/runtime-main.70c5ce7d.js.map",
     "static/js/2.0492344e.chunk.js": "/DenisLoza/Search_Movies/static/js/2.0492344e.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.70c5ce7d.js",
     "static/js/2.0492344e.chunk.js",
     "static/css/main.22dba1a6.chunk.css",
-    "static/js/main.c2434856.chunk.js"
+    "static/js/main.a281ac32.chunk.js"
   ]
 }
