@@ -4,7 +4,9 @@ import Preloader from "../Components/Preloader"
 import SearchPanel from "../Components/SearchPanel"
 
 
-const API_KEY = process.env.REACT_APP_API_KEY
+//const API_KEY = process.env.REACT_APP_API_KEY
+const API_KEY = "7ea62270"
+
 
 export default class Main extends React.Component {
 
